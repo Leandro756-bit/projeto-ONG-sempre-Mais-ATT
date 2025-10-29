@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sempre-Mais</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="container">
+        <div class="col-8">
+            <h1>Sempre-Mais</h1>
+        </div>
+        <div class="col-4">
+            <div class="menu-toggle">☰</div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="projetos.html">Projetos</a></li>
+                    <li><a href="cadastro.html">Cadastro</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- CARROSSEL -->
+    <div class="carousel container">
+        <img src="images/sempre-mais.jpg" class="active" alt="Sempre-Mais">
+        <img src="images/caridade.jpg" alt="Caridade">
+        <img src="images/feliz.jpg" alt="Feliz">
+        <button class="prev">&#10094;</button>
+        <button class="next">&#10095;</button>
+    </div>
+
+    <!-- CARDS DE PROJETOS -->
+    <section class="container cards-container">
+        <div class="col-4">
+            <div class="card">
+                <img src="images/sempre-mais.jpg" alt="Projeto Sempre-Mais">
+                <h3>Projeto Sempre-Mais <span class="badge">Alimentação</span></h3>
+                <p>Distribuição de alimentos para famílias.</p>
+                <button>Participar</button>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card">
+                <img src="images/caridade.jpg" alt="Projeto Caridade">
+                <h3>Projeto Caridade <span class="badge">Saúde</span></h3>
+                <p>Fornecimento de medicamentos e atendimento básico.</p>
+                <button>Doar</button>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card">
+                <img src="images/feliz.jpg" alt="Projeto Feliz">
+                <h3>Projeto Feliz <span class="badge">Vestimenta</span></h3>
+                <p>Entrega de roupas para pessoas em vulnerabilidade.</p>
+                <button>Participar</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FORMULÁRIO DE CADASTRO -->
+    <section class="container">
+        <div class="col-6">
+            <form id="cadastro-form">
+                <input type="text" name="nome" placeholder="Nome completo" required>
+                <input type="email" name="email" placeholder="E-mail" required>
+                <input type="tel" name="telefone" placeholder="Telefone" required>
+                <button type="submit">Enviar</button>
+                <div id="form-message"></div>
+            </form>
+        </div>
+        <div class="col-6">
+            <img src="images/sempre-mais.jpg" alt="Informações adicionais" style="width:100%; border-radius:8px;">
+        </div>
+    </section>
+
+    <!-- JS CARROSSEL E FORMULÁRIO -->
+    <script>
+        // CARROSSEL
+        let current = 0;
+        const slides = document.querySelectorAll('.carousel img');
+        const total = slides.length;
+
+        function showSlide(index) {
+            slides.forEach(img => img.classList.remove('active'));
+            slides[index].classList.add('active');
+        }
+
+        setInterval(() => {
+            current = (current + 1) % total;
+            showSlide(current);
+        }, 3000);
+
+        document.querySelector('.next').addEventListener('click', () => {
+            current = (current + 1) % total;
+            showSlide(current);
+        });
+
+        document.querySelector('.prev').addEventListener('click', () => {
+            current = (current - 1 + total) % total;
+            showSlide(current);
+        });
+
+        // FORMULÁRIO
+        const form = document.getElementById('cadastro-form');
+        const message = document.getElementById('form-message');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            if(form.checkValidity()) {
+                message.textContent = "Cadastro realizado com sucesso!";
+                message.style.color = "green";
+                form.reset();
+            } else {
+                message.textContent = "Preencha todos os campos corretamente.";
+                message.style.color = "red";
+            }
+        });
+    </script>
+
+</body>
+</html>
+
+
+
