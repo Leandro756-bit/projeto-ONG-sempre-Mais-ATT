@@ -6,7 +6,11 @@
     <title>Sempre-Mais</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
+<script type="module" src="../js/main.js"></script>
+
+<p id="form-message"></p>
 
     <!-- HEADER -->
     <header class="container">
@@ -24,6 +28,7 @@
             </nav>
         </div>
     </header>
+    </body>
 
     <!-- CARROSSEL -->
     <div class="carousel container">
@@ -105,25 +110,4 @@
             showSlide(current);
         });
 
-        // FORMULÁRIO
-        const form = document.getElementById('cadastro-form');
-        const message = document.getElementById('form-message');
-
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            if(form.checkValidity()) {
-                message.textContent = "Cadastro realizado com sucesso!";
-                message.style.color = "green";
-                form.reset();
-            } else {
-                message.textContent = "Preencha todos os campos corretamente.";
-                message.style.color = "red";
-            }
-        });
-    </script>
-
-</body>
-</html>
-
-
-
+       

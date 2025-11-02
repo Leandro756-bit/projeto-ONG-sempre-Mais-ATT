@@ -58,5 +58,3 @@ document.querySelector('.prev').addEventListener('click', () => {
     showSlide(current);
 });
 
-
-
